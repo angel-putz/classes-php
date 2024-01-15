@@ -26,7 +26,7 @@ class User {
         $this->database = "classes";
     }
 
-    public function register($login, $passwordBDD, $email, $firstname, $lastname , $password) {
+    public function register($login, $email, $firstname, $lastname , $password) {
         
         $servername = "localhost";
         $username = "root";
@@ -34,11 +34,6 @@ class User {
         $database = "classes";
         
         
-        $login = $_POST['login'];
-        $password = $_POST['password'];
-        $email = $_POST['email'];
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
 
 
 
@@ -149,10 +144,15 @@ class User {
         return $lastname;
     }
 }
+$login = $_POST['login'];
+$password = $_POST['password'];
+$email = $_POST['email'];
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
 
-$user = new User($_POST['login'], $_POST['password'], $_POST['email'], $_POST['firstname'], $_POST['lastname']);
-
-
+$user = new User($login, $password, $email, $firstname, $lastname);
+echo $user->register($login, $email, $firstname, $lastname , $password);
+echo $user->connect($login , $password);
 
 
 ?>
@@ -165,7 +165,7 @@ $user = new User($_POST['login'], $_POST['password'], $_POST['email'], $_POST['f
     <title>Document</title>
 </head>
 <body>
-    <foùrm action="User.php" method="post">
+    <foùrm method="post">
         <input type="text" name="login" placeholder="login">
         <input type="password" name="password" placeholder="password">
         <input type="email" name="email" placeholder="email">
