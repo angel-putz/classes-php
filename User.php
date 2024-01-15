@@ -150,6 +150,11 @@ class User {
     }
 }
 
+$user = new User($_POST['login'], $_POST['password'], $_POST['email'], $_POST['firstname'], $_POST['lastname']);
+
+
+
+
 ?>
 
 <!DOCTYPE html>
