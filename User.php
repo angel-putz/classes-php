@@ -23,7 +23,7 @@ class User {
         $this->servername = "localhost";
         $this->username = "root";
         $this->passwordBDD = "";
-        $this->database = "classes-php";
+        $this->database = "classes";
     }
 
     public function register($login, $passwordBDD, $email, $firstname, $lastname , $password) {
@@ -31,7 +31,7 @@ class User {
         $servername = "localhost";
         $username = "root";
         $passwordBDD = "";
-        $database = "classes-php";
+        $database = "classes";
         
         
         $login = $_POST['login'];
@@ -52,7 +52,7 @@ class User {
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $database = "classes-php";
+        $database = "classes";
 
 
         $login = $_POST['login'];
@@ -73,7 +73,7 @@ class User {
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $database = "classes-php";
+        $database = "classes";
 
         $login = $_SESSION['login'];
         $password = $_SESSION['password'];
@@ -87,7 +87,7 @@ class User {
         $servername = "localhost";
         $username = "root";
         $passwordBDD = "";
-        $database = "classes-php";
+        $database = "classes";
 
         $login = $_POST['login'];
         $password = $_POST['password'];
@@ -118,7 +118,7 @@ class User {
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $database = "classes-php";
+        $database = "classes";
 
         $login = $_SESSION['login'];
         $password = $_SESSION['password'];
