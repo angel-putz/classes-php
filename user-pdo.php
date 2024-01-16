@@ -78,9 +78,24 @@ class Userpdo {
     }
 
     public function update($login, $password, $email, $firstname, $lastname) {
-        $pdo = new PDO("mysql:host=localhost;dbname=classes", "root", "");
-        $result = $pdo->query("UPDATE `utilisateurs` SET `login` = '$login', `password` = '$password', `email` = '$email', `firstname` = '$firstname', `lastname` = '$lastname' WHERE `login` = '$login'");
-        echo "Votre compte a été mis à jour !";
+            $pdo = new PDO("mysql:host=localhost;dbname=classes", "root", "");
+            $stmt = $pdo->prepare("SELECT `id` FROM `utilisateurs` WHERE `login` = :login AND `password` = :password");
+            $stmt->execute([':login' => $login, ':password' => $password]);
+            $user = $stmt->fetch();
+
+            if ($user) {
+                $stmt = $pdo->prepare("UPDATE `utilisateurs` SET `login` = :login, `password` = :password, `email` = :email, `firstname` = :firstname, `lastname` = :lastname WHERE `id` = :id");
+                $stmt->execute([':login' => $login, ':password' => $password, ':email' => $email, ':firstname' => $firstname, ':lastname' => $lastname, ':id' => $user['id']]);
+                echo "Votre compte a été mis à jour !";
+                $this->id = $user['id'];
+                $this->login = $login;
+                $this->password = $password;
+                $this->email = $email;
+                $this->firstname = $firstname;
+                $this->lastname = $lastname;
+            } else {
+                echo "Aucun utilisateur trouvé avec ce login et ce mot de passe.";
+            }
     }
 
     public function isConnected() {
@@ -156,17 +171,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //$user->getFirstname($login);
     //$user->getLastname($login);
     //$user->disconnect();
-    //$user->isConnected();
-    //$user->register($login, $email, $firstname, $lastname , $password);
-    //$user->connect($login, $password);
     //$user->delete($login, $password);
-    //$user->update($login, $password, $email, $firstname, $lastname);
-    //$user->isConnected();
-    //$user->getAllInfos($login, $password);
-    //$user->getLogin($email);
-    //$user->getEmail($login);
-    //$user->getFirstname($login);
-    //$user->getLastname($login);
+    $user->update($login, $password, $email, $firstname, $lastname);
 }
 ?>
 
