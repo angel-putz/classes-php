@@ -3,8 +3,11 @@ session_start();
 $login = $_POST['login'];
 $password = $_POST['password'];
 $email = $_POST['email'];
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
 
 $_SESSION['login'] = $login;
+
 
 class Userpdo {
     private $id;
@@ -144,6 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lastname = $_POST['lastname'];
 
     $user = new Userpdo($login, $password, $email, $firstname, $lastname);
+    //$user->register($login, $email, $firstname, $lastname , $password);
     //$user->connect($login, $password);
     //$user->isConnected();
     //$user->getAllInfos($login, $password);
