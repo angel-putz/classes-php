@@ -155,8 +155,6 @@ class Userpdo {
     }
 }
 
-
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = $_POST['login'];
     $password = $_POST['password'];
@@ -178,9 +176,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user->update($login, $password, $email, $firstname, $lastname , $login2, $password2);
 }
 
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
