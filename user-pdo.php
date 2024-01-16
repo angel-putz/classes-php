@@ -5,6 +5,8 @@ $password = $_POST['password'];
 $email = $_POST['email'];
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
+$login2 = "422";
+$password2 = "422";
 
 $_SESSION['login'] = $login;
 
@@ -77,15 +79,16 @@ class Userpdo {
         echo "Votre compte a été supprimé !";
     }
 
-    public function update($login, $password, $email, $firstname, $lastname) {
+    public function update($login, $password, $email, $firstname, $lastname , $login2, $password2) {
             $pdo = new PDO("mysql:host=localhost;dbname=classes", "root", "");
             $stmt = $pdo->prepare("SELECT `id` FROM `utilisateurs` WHERE `login` = :login AND `password` = :password");
             $stmt->execute([':login' => $login, ':password' => $password]);
             $user = $stmt->fetch();
 
+
             if ($user) {
                 $stmt = $pdo->prepare("UPDATE `utilisateurs` SET `login` = :login, `password` = :password, `email` = :email, `firstname` = :firstname, `lastname` = :lastname WHERE `id` = :id");
-                $stmt->execute([':login' => $login, ':password' => $password, ':email' => $email, ':firstname' => $firstname, ':lastname' => $lastname, ':id' => $user['id']]);
+                $stmt->execute([':login' => $login2, ':password' => $password2, ':email' => $email, ':firstname' => $firstname, ':lastname' => $lastname, ':id' => $user['id']]);
                 echo "Votre compte a été mis à jour !";
                 $this->id = $user['id'];
                 $this->login = $login;
@@ -172,8 +175,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //$user->getLastname($login);
     //$user->disconnect();
     //$user->delete($login, $password);
-    $user->update($login, $password, $email, $firstname, $lastname);
+    $user->update($login, $password, $email, $firstname, $lastname , $login2, $password2);
 }
+
+
 ?>
 
 

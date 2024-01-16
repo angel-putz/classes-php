@@ -75,13 +75,12 @@ class User {
         echo "Votre compte a été supprimé !";
     }
 
-    public function update($login ,$password ,$email , $firstname , $lastname){
+    public function update($login ,$password ,$email , $firstname , $lastname ,$login2 ,$password2){
         $mysqli = new mysqli($this->servername, $this->username, $this->passwordBDD, $this->database);
         $mysqli2 = new mysqli($this->servername, $this->username, $this->passwordBDD, $this->database);
         $id = $mysqli2->query("SELECT 'id' FROM `utilisateurs` WHERE `login` = '$login' AND `password` = '$password'");
        // $mysqli->query("UPDATE `utilisateurs` SET `login` = '2', `password` = '2', `email` = '2', `firstname` = '2', `lastname` = '2' WHERE `utilisateurs`.`id` = '7'");
-        $mysqli->query("UPDATE `utilisateurs` SET `login` = '$login', `password` = '$password', `email` = '$email', `firstname` = '$firstname', `lastname` = '$lastname' WHERE `utilisateurs`.`id` = $id");
-        var_dump($mysqli);
+        $mysqli->query("UPDATE `utilisateurs` SET `login` = '$login2', `password` = '$password2', `email` = '$email', `firstname` = '$firstname', `lastname` = '$lastname' WHERE `utilisateurs`.`id` = $id");
         echo "Votre compte a été mis à jour !";
     }
 
@@ -173,7 +172,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = new User($login, $password, $email, $firstname, $lastname);  
    // $user->register($login, $email, $firstname, $lastname , $password); 
    // $user->connect($login , $password);
-    //$user->connect(2 , 2);
+    //$user->update($login ,$password ,$email , $firstname , $lastname);
     //$user->disconnect();
  //   $user->delete();
     //$user->update(2 ,2 ,2, 2 , 2);
