@@ -173,7 +173,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //$user->getLastname($login);
     //$user->disconnect();
     //$user->delete($login, $password);
-    $user->update($login, $password, $email, $firstname, $lastname , $login2, $password2);
+    //$user->update($login, $password, $email, $firstname, $lastname , $login2, $password2);
 }
 
 ?>

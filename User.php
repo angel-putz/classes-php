@@ -170,16 +170,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lastname = $_POST['lastname'];
 
     $user = new User($login, $password, $email, $firstname, $lastname);  
-   // $user->register($login, $email, $firstname, $lastname , $password); 
-   // $user->connect($login , $password);
+    //$user->register($login, $email, $firstname, $lastname , $password); 
+    //$user->connect($login , $password);
     //$user->update($login ,$password ,$email , $firstname , $lastname);
     //$user->disconnect();
- //   $user->delete();
+    //$user->delete();
     //$user->update(2 ,2 ,2, 2 , 2);
-   // $user->isConnected();
-   // $user->getAllInfos($login , $password);
-   // $user->getLogin($email);
-  //  $user->getEmail($login);
+    //$user->isConnected();
+    //$user->getAllInfos($login , $password);
+    //$user->getLogin($email);
+    //$user->getEmail($login);
     //$user->getFirstname($login);
     //$user->getLastname($login);
 }
