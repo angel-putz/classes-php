@@ -5,7 +5,7 @@ $password = $_POST['password'];
 $email = $_POST['email'];
 
 $_SESSION['login'] = $login;
-include "database.php";
+
 
 class User {
     private $id;
